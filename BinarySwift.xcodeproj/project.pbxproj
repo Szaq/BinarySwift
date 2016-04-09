@@ -24,7 +24,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		3980FC6D1CB92F2C0091D322 /* BinarySwift_OSX.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BinarySwift_OSX.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3980FC6D1CB92F2C0091D322 /* BinarySwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BinarySwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3980FC701CB92F2C0091D322 /* BinarySwift_OSX.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BinarySwift_OSX.h; sourceTree = "<group>"; };
 		3980FC721CB92F2C0091D322 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3980FC791CB92F620091D322 /* BinaryData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BinaryData.swift; sourceTree = "<group>"; };
@@ -33,7 +33,7 @@
 		3980FC7C1CB92F620091D322 /* Common.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
 		3980FC7D1CB92F620091D322 /* IntegerType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntegerType.swift; sourceTree = "<group>"; };
 		3980FC7E1CB92F620091D322 /* Tuple.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tuple.swift; sourceTree = "<group>"; };
-		3980FC8A1CB92F840091D322 /* BinarySwift_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BinarySwift_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3980FC8A1CB92F840091D322 /* BinarySwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BinarySwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3980FC8C1CB92F840091D322 /* BinarySwift_iOS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BinarySwift_iOS.h; sourceTree = "<group>"; };
 		3980FC8E1CB92F840091D322 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -69,8 +69,8 @@
 		3980FC6E1CB92F2C0091D322 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				3980FC6D1CB92F2C0091D322 /* BinarySwift_OSX.framework */,
-				3980FC8A1CB92F840091D322 /* BinarySwift_iOS.framework */,
+				3980FC6D1CB92F2C0091D322 /* BinarySwift.framework */,
+				3980FC8A1CB92F840091D322 /* BinarySwift.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -144,7 +144,7 @@
 			);
 			name = BinarySwift_OSX;
 			productName = BinarySwift;
-			productReference = 3980FC6D1CB92F2C0091D322 /* BinarySwift_OSX.framework */;
+			productReference = 3980FC6D1CB92F2C0091D322 /* BinarySwift.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		3980FC891CB92F840091D322 /* BinarySwift_iOS */ = {
@@ -162,7 +162,7 @@
 			);
 			name = BinarySwift_iOS;
 			productName = BinarySwift_iOS;
-			productReference = 3980FC8A1CB92F840091D322 /* BinarySwift_iOS.framework */;
+			productReference = 3980FC8A1CB92F840091D322 /* BinarySwift.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -349,7 +349,7 @@
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.spinaldevelopment.BinarySwift;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = BinarySwift;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -369,7 +369,7 @@
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.spinaldevelopment.BinarySwift;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = BinarySwift;
 				SKIP_INSTALL = YES;
 			};
 			name = Release;
@@ -387,7 +387,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.spinaldevelopment.BinarySwift-iOS";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = BinarySwift;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -407,7 +407,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.spinaldevelopment.BinarySwift-iOS";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = BinarySwift;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -434,6 +434,7 @@
 				3980FC771CB92F2C0091D322 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		3980FC8F1CB92F840091D322 /* Build configuration list for PBXNativeTarget "BinarySwift_iOS" */ = {
 			isa = XCConfigurationList;
@@ -442,6 +443,7 @@
 				3980FC911CB92F840091D322 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
