@@ -90,4 +90,10 @@ public class BinaryDataReader {
     readIndex += length
     return string
   }
+  
+  public func read(length: Int) throws -> BinaryData {
+    let subdata = try data.subData(readIndex, length)
+    readIndex += length
+    return subdata
+  }
 }
