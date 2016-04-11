@@ -2,5 +2,5 @@ language: objective-c
 osx_image: xcode7.3
 
 script:
-- xcodebuild clean build -project BinarySwift.xcodeproj -scheme BinarySwiftTests_OSX
+- xcodebuild clean build -project BinarySwift.xcodeproj -scheme BinarySwift_OSX
 - xcodebuild test -project BinarySwift.xcodeproj -scheme BinarySwiftTests_OSX
