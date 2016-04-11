@@ -157,7 +157,7 @@ class BinaryDataTests: XCTestCase {
     }
     
     
-    //MARK: Test reading String
+    //MARK: - Test reading String
     func testGetNullTerminatedString() {
         let testString = "TestData"
         let data = BinaryData(data: Array(testString.nulTerminatedUTF8))
@@ -189,4 +189,31 @@ class BinaryDataTests: XCTestCase {
             }
         }
     }
+  
+  //MARK: - Test reading subdata
+  
+  func testGetSubData() {
+    XCTAssertEqual((try? intData.subData(1, 2).data) ?? [], [0x11, 0x00])
+  }
+  
+  func testPerformanceGetSubData() {
+    self.measureBlock {
+      self.doManyTimes {
+        let _ = try? self.intData.subData(1, 2)
+      }
+    }
+  }
+  
+  func testTail() {
+    XCTAssertEqual((try? intData.tail(1).data) ?? [], [0x11, 0x00, 0xef])
+  }
+  
+  func testPerformanceTail() {
+    self.measureBlock {
+      self.doManyTimes {
+        let _ = try? self.intData.tail(1)
+      }
+    }
+  }
+
 }

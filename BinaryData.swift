@@ -11,7 +11,7 @@ import Foundation
 
 public struct BinaryData : ArrayLiteralConvertible {
   public typealias Element = UInt8
-  let data: [UInt8]
+  public let data: [UInt8]
   let bigEndian: Bool
   
   // MARK: - Initializers
