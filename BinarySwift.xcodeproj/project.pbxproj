@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2009DE461CBBC98200A4BC50 /* BinarySwiftTests_OSX.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2009DE451CBBC98200A4BC50 /* BinarySwiftTests_OSX.swift */; };
+		2009DE481CBBC98200A4BC50 /* BinarySwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3980FC6D1CB92F2C0091D322 /* BinarySwift.framework */; };
+		2009DE521CBBCA1800A4BC50 /* BinaryDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2009DE511CBBCA1800A4BC50 /* BinaryDataTests.swift */; };
 		3980FC711CB92F2C0091D322 /* BinarySwift_OSX.h in Headers */ = {isa = PBXBuildFile; fileRef = 3980FC701CB92F2C0091D322 /* BinarySwift_OSX.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3980FC7F1CB92F620091D322 /* BinaryData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3980FC791CB92F620091D322 /* BinaryData.swift */; };
 		3980FC801CB92F620091D322 /* BinaryDataErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3980FC7A1CB92F620091D322 /* BinaryDataErrors.swift */; };
@@ -23,7 +26,21 @@
 		3980FC971CB92F920091D322 /* Tuple.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3980FC7E1CB92F620091D322 /* Tuple.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		2009DE491CBBC98200A4BC50 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3980FC641CB92F2C0091D322 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3980FC6C1CB92F2C0091D322;
+			remoteInfo = BinarySwift_OSX;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
+		2009DE431CBBC98200A4BC50 /* BinarySwiftTests_OSX.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BinarySwiftTests_OSX.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		2009DE451CBBC98200A4BC50 /* BinarySwiftTests_OSX.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BinarySwiftTests_OSX.swift; sourceTree = "<group>"; };
+		2009DE471CBBC98200A4BC50 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2009DE511CBBCA1800A4BC50 /* BinaryDataTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BinaryDataTests.swift; sourceTree = "<group>"; };
 		3980FC6D1CB92F2C0091D322 /* BinarySwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BinarySwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3980FC701CB92F2C0091D322 /* BinarySwift_OSX.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BinarySwift_OSX.h; sourceTree = "<group>"; };
 		3980FC721CB92F2C0091D322 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -39,6 +56,14 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		2009DE401CBBC98200A4BC50 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2009DE481CBBC98200A4BC50 /* BinarySwift.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		3980FC691CB92F2C0091D322 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -56,12 +81,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2009DE441CBBC98200A4BC50 /* BinarySwiftTests_OSX */ = {
+			isa = PBXGroup;
+			children = (
+				2009DE451CBBC98200A4BC50 /* BinarySwiftTests_OSX.swift */,
+				2009DE471CBBC98200A4BC50 /* Info.plist */,
+			);
+			path = BinarySwiftTests_OSX;
+			sourceTree = "<group>";
+		};
+		2009DE4E1CBBC99300A4BC50 /* Test Source */ = {
+			isa = PBXGroup;
+			children = (
+				2009DE511CBBCA1800A4BC50 /* BinaryDataTests.swift */,
+			);
+			name = "Test Source";
+			sourceTree = "<group>";
+		};
 		3980FC631CB92F2C0091D322 = {
 			isa = PBXGroup;
 			children = (
 				3980FC781CB92F520091D322 /* Source */,
+				2009DE4E1CBBC99300A4BC50 /* Test Source */,
 				3980FC6F1CB92F2C0091D322 /* BinarySwift_OSX */,
 				3980FC8B1CB92F840091D322 /* BinarySwift_iOS */,
+				2009DE441CBBC98200A4BC50 /* BinarySwiftTests_OSX */,
 				3980FC6E1CB92F2C0091D322 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -71,6 +115,7 @@
 			children = (
 				3980FC6D1CB92F2C0091D322 /* BinarySwift.framework */,
 				3980FC8A1CB92F840091D322 /* BinarySwift.framework */,
+				2009DE431CBBC98200A4BC50 /* BinarySwiftTests_OSX.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -129,6 +174,24 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		2009DE421CBBC98200A4BC50 /* BinarySwiftTests_OSX */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2009DE4D1CBBC98200A4BC50 /* Build configuration list for PBXNativeTarget "BinarySwiftTests_OSX" */;
+			buildPhases = (
+				2009DE3F1CBBC98200A4BC50 /* Sources */,
+				2009DE401CBBC98200A4BC50 /* Frameworks */,
+				2009DE411CBBC98200A4BC50 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				2009DE4A1CBBC98200A4BC50 /* PBXTargetDependency */,
+			);
+			name = BinarySwiftTests_OSX;
+			productName = BinarySwiftTests_OSX;
+			productReference = 2009DE431CBBC98200A4BC50 /* BinarySwiftTests_OSX.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		3980FC6C1CB92F2C0091D322 /* BinarySwift_OSX */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3980FC751CB92F2C0091D322 /* Build configuration list for PBXNativeTarget "BinarySwift_OSX" */;
@@ -171,9 +234,13 @@
 		3980FC641CB92F2C0091D322 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0730;
 				LastUpgradeCheck = 0730;
 				ORGANIZATIONNAME = "Spinal Development.com";
 				TargetAttributes = {
+					2009DE421CBBC98200A4BC50 = {
+						CreatedOnToolsVersion = 7.3;
+					};
 					3980FC6C1CB92F2C0091D322 = {
 						CreatedOnToolsVersion = 7.3;
 					};
@@ -196,11 +263,19 @@
 			targets = (
 				3980FC6C1CB92F2C0091D322 /* BinarySwift_OSX */,
 				3980FC891CB92F840091D322 /* BinarySwift_iOS */,
+				2009DE421CBBC98200A4BC50 /* BinarySwiftTests_OSX */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		2009DE411CBBC98200A4BC50 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		3980FC6B1CB92F2C0091D322 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -218,6 +293,15 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		2009DE3F1CBBC98200A4BC50 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2009DE521CBBCA1800A4BC50 /* BinaryDataTests.swift in Sources */,
+				2009DE461CBBC98200A4BC50 /* BinarySwiftTests_OSX.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		3980FC681CB92F2C0091D322 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -246,7 +330,37 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		2009DE4A1CBBC98200A4BC50 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3980FC6C1CB92F2C0091D322 /* BinarySwift_OSX */;
+			targetProxy = 2009DE491CBBC98200A4BC50 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		2009DE4B1CBBC98200A4BC50 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = BinarySwiftTests_OSX/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.macoscope.BinarySwiftTests-OSX";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		2009DE4C1CBBC98200A4BC50 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = BinarySwiftTests_OSX/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.macoscope.BinarySwiftTests-OSX";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 		3980FC731CB92F2C0091D322 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -418,6 +532,14 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		2009DE4D1CBBC98200A4BC50 /* Build configuration list for PBXNativeTarget "BinarySwiftTests_OSX" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2009DE4B1CBBC98200A4BC50 /* Debug */,
+				2009DE4C1CBBC98200A4BC50 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		3980FC671CB92F2C0091D322 /* Build configuration list for PBXProject "BinarySwift" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
