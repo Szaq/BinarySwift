@@ -40,28 +40,27 @@ public struct BinaryData : ArrayLiteralConvertible {
   // MARK: - Simple data types
   
   public func get(offset: Int, bigEndian: Bool? = nil) throws -> UInt8 {
-    if (data.count > offset) {
-      return data[offset]
-    } else {
-      throw BinaryDataErrors.NotEnoughData
-    }
+    guard offset < data.count else { throw BinaryDataErrors.NotEnoughData }
+    return data[offset]
   }
   
   public func get(offset: Int, bigEndian: Bool? = nil) throws -> UInt16 {
-    return UInt16.join((try get(offset), try get(offset + 1)),
+    guard offset + 1 < data.count else { throw BinaryDataErrors.NotEnoughData }
+    return UInt16.join((data[offset], data[offset + 1]),
       bigEndian: bigEndian ?? self.bigEndian)
   }
   
   public func get(offset: Int, bigEndian: Bool? = nil) throws -> UInt32 {
-    return UInt32.join((try get(offset), try get(offset + 1), try get(offset + 2), try get(offset + 3)),
+     guard offset + 3 < data.count else { throw BinaryDataErrors.NotEnoughData }
+    return UInt32.join((data[offset], data[offset + 1], data[offset + 2], data[offset + 3]),
       bigEndian: bigEndian ?? self.bigEndian)
   }
   
   public func get(offset: Int, bigEndian: Bool? = nil) throws -> UInt64 {
-    return UInt64.join((try get(offset), try get(offset + 1), try get(offset + 2), try get(offset + 3),
-      try get(offset + 4), try get(offset + 5), try get(offset + 6), try get(offset + 7)),
-      bigEndian: bigEndian ?? self.bigEndian)
-  }
+    guard offset + 7 < data.count else { throw BinaryDataErrors.NotEnoughData }
+    return UInt64.join((data[offset], data[offset + 1], data[offset + 2], data[offset + 3],
+        data[offset + 4], data[offset + 5], data[offset + 6], data[offset + 7]),
+                       bigEndian: bigEndian ?? self.bigEndian)  }
   
   public func get(offset: Int, bigEndian: Bool? = nil) throws -> Int8 {
     let uint: UInt8 = try get(offset, bigEndian: bigEndian ?? self.bigEndian)
