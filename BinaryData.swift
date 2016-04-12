@@ -102,10 +102,10 @@ public struct BinaryData : ArrayLiteralConvertible {
     
     while true {
       switch utf8.decode(&generator) {
-      case .Result(let unicodeScalar):
-        if unicodeScalar.value > 0 {
+      case .Result(let unicodeScalar) where unicodeScalar.value > 0:
           string.append(unicodeScalar)
-        }
+      case .Result(_):
+        break
       case .EmptyInput:
         return string
       case .Error:
