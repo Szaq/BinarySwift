@@ -18,6 +18,47 @@ class BinaryDataTests: XCTestCase {
             block()
         }
     }
+  
+    //MARK: - Initialization
+    
+    func testArrayLiteralInit() {
+        let data:BinaryData = [0xf, 0x00, 0x1, 0xa]
+        XCTAssertEqual(data.data, [0xf, 0x00, 0x1, 0xa])
+        XCTAssertTrue(data.bigEndian)
+    }
+    
+    func testArrayInit() {
+        let data = BinaryData(data: [0xf, 0x00, 0x1, 0xa])
+        XCTAssertEqual(data.data, [0xf, 0x00, 0x1, 0xa])
+        XCTAssertTrue(data.bigEndian)
+        
+        let dataExplicitBigEndianTrue = BinaryData(data: [0xf, 0x00, 0x1, 0xa], bigEndian: true)
+        XCTAssertEqual(dataExplicitBigEndianTrue.data, [0xf, 0x00, 0x1, 0xa])
+        XCTAssertTrue(dataExplicitBigEndianTrue.bigEndian)
+        
+        let dataExplicitBigEndianFalse = BinaryData(data: [0xf, 0x00, 0x1, 0xa], bigEndian: false)
+        XCTAssertEqual(dataExplicitBigEndianFalse.data, [0xf, 0x00, 0x1, 0xa])
+        XCTAssertFalse(dataExplicitBigEndianFalse.bigEndian)
+    }
+    
+    func testNSDataInit() {
+        guard let nsData = NSData(base64EncodedString: "MTIzNA==", options: NSDataBase64DecodingOptions())
+            else { XCTFail("Failed to decode test Base64 string"); return}
+        
+        let data = BinaryData(data: nsData)
+        XCTAssertEqual(data.data, [49, 50, 51, 52])
+        XCTAssertTrue(data.bigEndian)
+        
+        let dataExplicitBigEndianTrue = BinaryData(data: nsData, bigEndian: true)
+        XCTAssertEqual(dataExplicitBigEndianTrue.data, [49, 50, 51, 52])
+        XCTAssertTrue(dataExplicitBigEndianTrue.bigEndian)
+        
+        let dataExplicitBigEndianFalse = BinaryData(data: nsData, bigEndian: false)
+        XCTAssertEqual(dataExplicitBigEndianFalse.data, [49, 50, 51, 52])
+        XCTAssertFalse(dataExplicitBigEndianFalse.bigEndian)
+    }
+    
+  
     
     //MARK: - Reading One - byte values
     
