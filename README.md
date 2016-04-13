@@ -55,7 +55,7 @@ let header = IPHeader(version: try data.get(0),
 
 ```
 
-If mutating structures are not a problem for you then with BinaryDataReader it is even simpler:
+If mutating reference types are not a problem for you then with BinaryDataReader it is even simpler:
 ```swift
 
 struct IPHeader {
@@ -74,7 +74,7 @@ struct IPHeader {
 
 let nsData = ...
 let data = BinaryData(data: nsData)
-var reader = BinaryDataReader(data)
+let reader = BinaryDataReader(data)
 
 let header = IPHeader(version: try reader.read(),
                     headerLength: try reader.read(),
@@ -89,7 +89,9 @@ let header = IPHeader(version: try reader.read(),
                     destination: in_addr(s_addr: try reader.read()))
 
 ```
-This is perfect compromise. Neither magic nor to verbose.
+You can even pass `reader` down to other functions, because it is a `class` and reference semantics applies.
+
+This library is perfect compromise. Neither magic nor too verbose.
 
 #Contributions
 Contributions are more than welcome. Please send your PRs.
