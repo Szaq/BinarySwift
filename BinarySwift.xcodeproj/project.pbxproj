@@ -125,7 +125,9 @@
 				39EE444F1CBC542700C947A9 /* BinarySwiftTests_iOS */,
 				3980FC6E1CB92F2C0091D322 /* Products */,
 			);
+			indentWidth = 2;
 			sourceTree = "<group>";
+			tabWidth = 2;
 		};
 		3980FC6E1CB92F2C0091D322 /* Products */ = {
 			isa = PBXGroup;
