@@ -2,18 +2,17 @@
 -333333.svg) ![pod](https://img.shields.io/cocoapods/v/BinarySwift.svg)[![Build Status](https://travis-ci.org/Szaq/BinarySwift.svg?branch=master)](https://travis-ci.org/Szaq/BinarySwift)
 # BinarySwift
 
-BinarySwift is a pure-swift library for parsing binary data. It contains
-                   two components - BinaryReader which can be used to parse
+BinarySwift is a pure-swift library for parsing binary data. It contains two components - BinaryReader which can be used to parse
                    binary data in non-mutating environment,
                    and BinaryDataReader which keeps index of last read byte and
                    automatically updates it.
 
-                   Using this library you can read:
-                    - UInt(8/16/32/64)
-                    - Int(8/16/32/64)
-                    - Float(32,64)
-                    - Null-terminated UTF8 string
-                    - UTF8 String of known size
+Using this library you can read:
+- UInt(8/16/32/64)
+- Int(8/16/32/64)
+- Float(32,64)
+- Null-terminated UTF8 string
+- UTF8 String of known size
                     
 # How to use
 
