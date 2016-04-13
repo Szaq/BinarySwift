@@ -8,7 +8,12 @@
 
 import Foundation
 
-enum BinaryDataErrors : ErrorType {
+/**
+ Errors thrown by `BinaryData` i `BinaryDataReader`
+ */
+public enum BinaryDataErrors : ErrorType {
+  ///There wasn't enough data to read in current `BinaryData` struct
   case NotEnoughData
+  ///Data was supposed to be UTF8, but there was an error parsing it
   case FailedToConvertToString
 }
