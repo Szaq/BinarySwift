@@ -94,8 +94,7 @@ You can even pass `reader` down to other functions, because it is a `class` and 
 This library is perfect compromise. Neither magic nor too verbose.
 
 #TODO
-- Add documentation
 - Add more tests
 
 #Contributions
-Contributions are more than welcome. Please send your PRs.
+Contributions are more than welcome. Please send your PRs / Issues / Whatever comes to your mind.
