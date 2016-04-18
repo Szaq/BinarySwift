@@ -11,7 +11,9 @@ import BinarySwift
 
 class BinaryDataTests: XCTestCase {
     
-    let intData = BinaryData(data: [0xff, 0x11, 0x00, 0xef])
+    let intData = BinaryData(data: [0xff, 0x11, 0x00, 0xef, 0x76, 0x12, 0x98, 0xff])
+    let floatData = BinaryData(data:[0x40, 0x20, 0x00, 0x00])
+    let doubleData = BinaryData(data:[0x40, 0x20, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00])
     
     func doManyTimes(block: () -> Void)  {
         for _ in 0 ..< 10000 {
@@ -196,12 +198,95 @@ class BinaryDataTests: XCTestCase {
             }
         }
     }
+
+    //MARK: - Reading Eight - byte values
     
+    func testGetUInt64() {
+        let value: UInt64? = try? intData.get(0)
+        XCTAssertEqual(value, 18379472582753818879)
+    }
+    
+    func testPerformanceGetUInt64() {
+        self.measureBlock {
+            self.doManyTimes {
+                let _: UInt64? = try? self.intData.get(0)
+            }
+        }
+    }
+    
+    func testGetInt64() {
+        let value: Int64? = try? intData.get(0)
+        XCTAssertEqual(value, -67271490955732737)
+    }
+    
+    func testPerformanceGetInt64() {
+        self.measureBlock {
+            self.doManyTimes {
+                let _: Int64? = try? self.intData.get(0)
+            }
+        }
+    }
+    
+    func testGetUInt64LittleEndian() {
+        let value: UInt64? = try? intData.get(0, bigEndian:false)
+        XCTAssertEqual(value, 18417490978156843519)
+    }
+    
+    func testPerformanceGetUInt64LittleEndian() {
+        self.measureBlock {
+            self.doManyTimes {
+                let _: UInt64? = try? self.intData.get(0, bigEndian:false)
+            }
+        }
+    }
+    
+    func testGetInt64LittleEndian() {
+        let value: Int64? = try? intData.get(0, bigEndian:false)
+        XCTAssertEqual(value, -29253095552708097)
+    }
+    
+    func testPerformanceGetInt64LittleEndian() {
+        self.measureBlock {
+            self.doManyTimes {
+                let _: Int64? = try? self.intData.get(0, bigEndian:false)
+            }
+        }
+    }
+    
+    //MARK: - Reading Floats
+    
+    func testGetFloat32() {
+        let value: Float32? = try? floatData.get(0)
+        XCTAssertEqual(value, 2.5)
+    }
+    
+    func testPerformanceGetFloat32() {
+        self.measureBlock {
+            self.doManyTimes {
+                let _: Float32? = try? self.floatData.get(0)
+            }
+        }
+    }
+    
+    func testGetFloat64() {
+        let value: Float64? = try? doubleData.get(0)
+        XCTAssertEqual(value, 8.0)
+    }
+    
+    func testPerformanceGetFloat64() {
+        self.measureBlock {
+            self.doManyTimes {
+                let _: Float64? = try? self.doubleData.get(0)
+            }
+        }
+    }
     
     //MARK: - Test reading String
     func testGetNullTerminatedString() {
         let testString = "TestData"
-        let data = BinaryData(data: Array(testString.nulTerminatedUTF8))
+        let bytes = Array(testString.nulTerminatedUTF8)
+        let data = BinaryData(data: bytes + bytes)
+        print (bytes)
         XCTAssertEqual(try? data.getNullTerminatedUTF8(0), testString)
     }
     
@@ -246,7 +331,7 @@ class BinaryDataTests: XCTestCase {
   }
   
   func testTail() {
-    XCTAssertEqual((try? intData.tail(1).data) ?? [], [0x11, 0x00, 0xef])
+    XCTAssertEqual((try? intData.tail(1).data) ?? [], [0x11, 0x00, 0xef, 0x76, 0x12, 0x98, 0xff])
   }
   
   func testPerformanceTail() {

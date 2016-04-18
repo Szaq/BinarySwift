@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		2009DE481CBBC98200A4BC50 /* BinarySwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3980FC6D1CB92F2C0091D322 /* BinarySwift.framework */; };
 		2009DE521CBBCA1800A4BC50 /* BinaryDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2009DE511CBBCA1800A4BC50 /* BinaryDataTests.swift */; };
+		2009DE561CBD2ED000A4BC50 /* BinaryDataReaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2009DE551CBD2ED000A4BC50 /* BinaryDataReaderTests.swift */; };
+		2009DE571CBD2ED000A4BC50 /* BinaryDataReaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2009DE551CBD2ED000A4BC50 /* BinaryDataReaderTests.swift */; };
 		3980FC711CB92F2C0091D322 /* BinarySwift_OSX.h in Headers */ = {isa = PBXBuildFile; fileRef = 3980FC701CB92F2C0091D322 /* BinarySwift_OSX.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3980FC7F1CB92F620091D322 /* BinaryData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3980FC791CB92F620091D322 /* BinaryData.swift */; };
 		3980FC801CB92F620091D322 /* BinaryDataErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3980FC7A1CB92F620091D322 /* BinaryDataErrors.swift */; };
@@ -48,6 +50,7 @@
 		2009DE431CBBC98200A4BC50 /* BinarySwiftTests_OSX.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BinarySwiftTests_OSX.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2009DE471CBBC98200A4BC50 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2009DE511CBBCA1800A4BC50 /* BinaryDataTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BinaryDataTests.swift; sourceTree = "<group>"; };
+		2009DE551CBD2ED000A4BC50 /* BinaryDataReaderTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BinaryDataReaderTests.swift; sourceTree = "<group>"; };
 		3980FC6D1CB92F2C0091D322 /* BinarySwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BinarySwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3980FC701CB92F2C0091D322 /* BinarySwift_OSX.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BinarySwift_OSX.h; sourceTree = "<group>"; };
 		3980FC721CB92F2C0091D322 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -110,6 +113,7 @@
 			isa = PBXGroup;
 			children = (
 				2009DE511CBBCA1800A4BC50 /* BinaryDataTests.swift */,
+				2009DE551CBD2ED000A4BC50 /* BinaryDataReaderTests.swift */,
 			);
 			name = "Test Source";
 			sourceTree = "<group>";
@@ -355,6 +359,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2009DE521CBBCA1800A4BC50 /* BinaryDataTests.swift in Sources */,
+				2009DE561CBD2ED000A4BC50 /* BinaryDataReaderTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -389,6 +394,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				39EE44591CBC553B00C947A9 /* BinaryDataTests.swift in Sources */,
+				2009DE571CBD2ED000A4BC50 /* BinaryDataReaderTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

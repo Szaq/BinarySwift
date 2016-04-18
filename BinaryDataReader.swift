@@ -143,7 +143,7 @@ public class BinaryDataReader {
    */
   public func read() throws -> Float64 {
     let value: Float64 = try data.get(readIndex)
-    readIndex = readIndex + 4
+    readIndex = readIndex + 8
     return value
   }
   
@@ -158,7 +158,7 @@ public class BinaryDataReader {
    */
   public func readNullTerminatedUTF8() throws -> String {
     let string = try data.getNullTerminatedUTF8(readIndex)
-    readIndex += string.utf8.count
+    readIndex += string.utf8.count + 1//Account for \0
     return string
   }
   
