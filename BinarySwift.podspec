@@ -28,7 +28,7 @@ Pod::Spec.new do |s|
   s.ios.deployment_target = "8.0"
   s.osx.deployment_target = "10.9"
 
-  s.source       = { :git => "https://github.com/Szaq/BinarySwift.git", :tag => "v0.9.3" }
+  s.source       = { :git => "https://github.com/Szaq/BinarySwift.git", :tag => "v0.9.4" }
   s.source_files  = "*.swift"
   s.exclude_files = "*Tests.swift"
 
