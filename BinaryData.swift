@@ -11,7 +11,7 @@ import Foundation
 /**
  Structure for fast/immutable parsing of binary file.
  */
-public struct BinaryData : ArrayLiteralConvertible {
+public struct BinaryData : ExpressibleByArrayLiteral {
   public typealias Element = UInt8
   ///Underlying data for this object.
   public let data: [UInt8]
@@ -66,13 +66,13 @@ public struct BinaryData : ArrayLiteralConvertible {
    
    - remark: Data is copied.
    */
-  public init(data:NSData, bigEndian: Bool = true) {
+  public init(data:Data, bigEndian: Bool = true) {
     
     self.bigEndian = bigEndian
     
-    var mutableData = [UInt8](count: data.length, repeatedValue: 0)
-    if data.length > 0 {
-      data.getBytes(&mutableData, length: data.length)
+    var mutableData = [UInt8](repeating: 0, count: data.count)
+    if data.count > 0 {
+      (data as NSData).getBytes(&mutableData, length: data.count)
     }
     self.data = mutableData
   }
@@ -89,8 +89,8 @@ public struct BinaryData : ArrayLiteralConvertible {
    - returns: `UInt8` representation of byte at offset.
    - throws: `BinaryDataErrors.NotEnoughData` if there is not enough data.
    */
-  public func get(offset: Int, bigEndian: Bool? = nil) throws -> UInt8 {
-    guard offset < data.count else { throw BinaryDataErrors.NotEnoughData }
+  public func get(_ offset: Int, bigEndian: Bool? = nil) throws -> UInt8 {
+    guard offset < data.count else { throw BinaryDataErrors.notEnoughData }
     return data[offset]
   }
   
@@ -104,8 +104,8 @@ public struct BinaryData : ArrayLiteralConvertible {
    - returns: `UInt16` representation of byte at offset.
    - throws: `BinaryDataErrors.NotEnoughData` if there is not enough data.
    */
-  public func get(offset: Int, bigEndian: Bool? = nil) throws -> UInt16 {
-    guard offset + 1 < data.count else { throw BinaryDataErrors.NotEnoughData }
+  public func get(_ offset: Int, bigEndian: Bool? = nil) throws -> UInt16 {
+    guard offset + 1 < data.count else { throw BinaryDataErrors.notEnoughData }
     return UInt16.join((data[offset], data[offset + 1]),
                        bigEndian: bigEndian ?? self.bigEndian)
   }
@@ -120,8 +120,8 @@ public struct BinaryData : ArrayLiteralConvertible {
    - returns: `UInt32` representation of byte at offset.
    - throws: `BinaryDataErrors.NotEnoughData` if there is not enough data.
    */
-  public func get(offset: Int, bigEndian: Bool? = nil) throws -> UInt32 {
-    guard offset + 3 < data.count else { throw BinaryDataErrors.NotEnoughData }
+  public func get(_ offset: Int, bigEndian: Bool? = nil) throws -> UInt32 {
+    guard offset + 3 < data.count else { throw BinaryDataErrors.notEnoughData }
     return UInt32.join((data[offset], data[offset + 1], data[offset + 2], data[offset + 3]),
                        bigEndian: bigEndian ?? self.bigEndian)
   }
@@ -136,8 +136,8 @@ public struct BinaryData : ArrayLiteralConvertible {
    - returns: `UInt64` representation of byte at offset.
    - throws: `BinaryDataErrors.NotEnoughData` if there is not enough data.
    */
-  public func get(offset: Int, bigEndian: Bool? = nil) throws -> UInt64 {
-    guard offset + 7 < data.count else { throw BinaryDataErrors.NotEnoughData }
+  public func get(_ offset: Int, bigEndian: Bool? = nil) throws -> UInt64 {
+    guard offset + 7 < data.count else { throw BinaryDataErrors.notEnoughData }
     return UInt64.join((data[offset], data[offset + 1], data[offset + 2], data[offset + 3],
       data[offset + 4], data[offset + 5], data[offset + 6], data[offset + 7]),
                        bigEndian: bigEndian ?? self.bigEndian)  }
@@ -152,7 +152,7 @@ public struct BinaryData : ArrayLiteralConvertible {
    - returns: `Int8` representation of byte at offset.
    - throws: `BinaryDataErrors.NotEnoughData` if there is not enough data.
    */
-  public func get(offset: Int, bigEndian: Bool? = nil) throws -> Int8 {
+  public func get(_ offset: Int, bigEndian: Bool? = nil) throws -> Int8 {
     let uint: UInt8 = try get(offset, bigEndian: bigEndian ?? self.bigEndian)
     return Int8(bitPattern: uint)
   }
@@ -167,7 +167,7 @@ public struct BinaryData : ArrayLiteralConvertible {
    - returns: `Int16` representation of byte at offset.
    - throws: `BinaryDataErrors.NotEnoughData` if there is not enough data.
    */
-  public func get(offset: Int, bigEndian: Bool? = nil) throws -> Int16 {
+  public func get(_ offset: Int, bigEndian: Bool? = nil) throws -> Int16 {
     let uint:UInt16 = try get(offset, bigEndian: bigEndian ?? self.bigEndian)
     return Int16(bitPattern: uint)
   }
@@ -182,7 +182,7 @@ public struct BinaryData : ArrayLiteralConvertible {
    - returns: `Int32` representation of byte at offset.
    - throws: `BinaryDataErrors.NotEnoughData` if there is not enough data.
    */
-  public func get(offset: Int, bigEndian: Bool? = nil) throws -> Int32 {
+  public func get(_ offset: Int, bigEndian: Bool? = nil) throws -> Int32 {
     let uint:UInt32 = try get(offset, bigEndian: bigEndian ?? self.bigEndian)
     return Int32(bitPattern: uint)
   }
@@ -197,7 +197,7 @@ public struct BinaryData : ArrayLiteralConvertible {
    - returns: `Int64` representation of byte at offset.
    - throws: `BinaryDataErrors.NotEnoughData` if there is not enough data.
    */
-  public func get(offset: Int, bigEndian: Bool? = nil) throws -> Int64 {
+  public func get(_ offset: Int, bigEndian: Bool? = nil) throws -> Int64 {
     let uint:UInt64 = try get(offset, bigEndian: bigEndian ?? self.bigEndian)
     return Int64(bitPattern: uint)
   }
@@ -212,7 +212,7 @@ public struct BinaryData : ArrayLiteralConvertible {
    - returns: `Float32` representation of byte at offset.
    - throws: `BinaryDataErrors.NotEnoughData` if there is not enough data.
    */
-  public func get(offset: Int) throws -> Float32 {
+  public func get(_ offset: Int) throws -> Float32 {
     let uint:UInt32 = try get(offset)
     return unsafeConversion(uint)
   }
@@ -227,7 +227,7 @@ public struct BinaryData : ArrayLiteralConvertible {
    - returns: `Float64` representation of byte at offset.
    - throws: `BinaryDataErrors.NotEnoughData` if there is not enough data.
    */
-  public func get(offset: Int) throws -> Float64 {
+  public func get(_ offset: Int) throws -> Float64 {
     let uint:UInt64 = try get(offset)
     return unsafeConversion(uint)
   }
@@ -244,21 +244,21 @@ public struct BinaryData : ArrayLiteralConvertible {
       - `BinaryDataErrors.NotEnoughData` if there is not enough data.
       - `BinaryDataErrors.FailedToConvertToString` if there was an error converting byte stream to String.
    */
-  public func getNullTerminatedUTF8(offset: Int) throws -> String {
+  public func getNullTerminatedUTF8(_ offset: Int) throws -> String {
     var utf8 = UTF8()
     var string = ""
-    var generator = try subData(offset, data.count - offset).data.generate()
+    var generator = try subData(offset, data.count - offset).data.makeIterator()
     
     while true {
       switch utf8.decode(&generator) {
-      case .Result(let unicodeScalar) where unicodeScalar.value > 0:
-        string.append(unicodeScalar)
-      case .Result(_)://\0 means end of string
+      case .scalarValue(let unicodeScalar) where unicodeScalar.value > 0:
+        string.append(String(unicodeScalar))
+      case .scalarValue(_)://\0 means end of string
         return string
-      case .EmptyInput:
-        throw BinaryDataErrors.FailedToConvertToString
-      case .Error:
-        throw BinaryDataErrors.FailedToConvertToString
+      case .emptyInput:
+        throw BinaryDataErrors.failedToConvertToString
+      case .error:
+        throw BinaryDataErrors.failedToConvertToString
       }
     }
   }
@@ -274,19 +274,19 @@ public struct BinaryData : ArrayLiteralConvertible {
       - `BinaryDataErrors.NotEnoughData` if there is not enough data.
       - `BinaryDataErrors.FailedToConvertToString` if there was an error converting byte stream to String.
    */
-  public func getUTF8(offset: Int, length: Int) throws -> String {
+  public func getUTF8(_ offset: Int, length: Int) throws -> String {
     var utf8 = UTF8()
     var string = ""
-    var generator = try subData(offset, length).data.generate()
+    var generator = try subData(offset, length).data.makeIterator()
     
     while true {
       switch utf8.decode(&generator) {
-      case .Result(let unicodeScalar):
-        string.append(unicodeScalar)
-      case .EmptyInput:
+      case .scalarValue(let unicodeScalar):
+        string.append(String(unicodeScalar))
+      case .emptyInput:
         return string
-      case .Error:
-        throw BinaryDataErrors.FailedToConvertToString
+      case .error:
+        throw BinaryDataErrors.failedToConvertToString
       }
     }
   }
@@ -301,9 +301,9 @@ public struct BinaryData : ArrayLiteralConvertible {
    - returns: Subdata
    - throws: `BinaryDataErrors.NotEnoughData` if there is not enough data.
    */
-  public func tail(offset: Int) throws -> BinaryData {
+  public func tail(_ offset: Int) throws -> BinaryData {
     if offset > data.count {
-      throw BinaryDataErrors.NotEnoughData
+      throw BinaryDataErrors.notEnoughData
     }
     
     return try subData(offset, data.count - offset)
@@ -318,11 +318,11 @@ public struct BinaryData : ArrayLiteralConvertible {
    - returns: Subdata
    - throws: `BinaryDataErrors.NotEnoughData` if there is not enough data.
    */
-  public func subData(offset: Int, _ length: Int) throws -> BinaryData {
+  public func subData(_ offset: Int, _ length: Int) throws -> BinaryData {
     if offset >= 0 && offset <= data.count && length >= 0 && (offset + length) <= data.count {
       return BinaryData(data: Array(data[offset..<(offset + length)]))
     } else {
-      throw BinaryDataErrors.NotEnoughData
+      throw BinaryDataErrors.notEnoughData
     }
   }
 }

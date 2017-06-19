@@ -9,7 +9,7 @@
 import Foundation
 
 extension UInt16 {
-  static func join(parts: (UInt8, UInt8), bigEndian: Bool) -> UInt16 {
+  static func join(_ parts: (UInt8, UInt8), bigEndian: Bool) -> UInt16 {
     let tuple = toUInt16(applyOrder(parts, bigEndian))
     return (UInt16(tuple.1) << 8) | UInt16(tuple.0)
     
@@ -17,14 +17,14 @@ extension UInt16 {
 }
 
 extension UInt32 {
-  static func join(parts:(UInt8, UInt8, UInt8, UInt8), bigEndian: Bool) -> UInt32 {
+  static func join(_ parts:(UInt8, UInt8, UInt8, UInt8), bigEndian: Bool) -> UInt32 {
     let tuple = toUInt32(applyOrder(parts, bigEndian))
     return (UInt32(tuple.3) << 24) | (UInt32(tuple.2) << 16) | (UInt32(tuple.1) << 8) | UInt32(tuple.0)
   }
 }
 
 extension UInt64 {
-  static func join(parts:(UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8), bigEndian: Bool) -> UInt64{
+  static func join(_ parts:(UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8), bigEndian: Bool) -> UInt64{
     let tuple = toUInt64(applyOrder(parts, bigEndian))
     return (tuple.7 << 56) | (tuple.6 << 48) | (tuple.5 << 40) | (tuple.4 << 32)
       | (tuple.3 << 24) | (tuple.2 << 16) | (tuple.1 << 8) | tuple.0

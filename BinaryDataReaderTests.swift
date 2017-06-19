@@ -83,7 +83,7 @@ class BinaryDataReaderTests: XCTestCase {
     
     func testReadNullTerminatedString() {
         let string = "Test string"
-        let bytes = Array(string.nulTerminatedUTF8)
+        let bytes = Array(string.utf8CString).map {UInt8($0)}
         let reader = BinaryDataReader(BinaryData(data: bytes + bytes + [0x0, 0x12]))
         
         XCTAssertEqual(try? reader.readNullTerminatedUTF8(), string)

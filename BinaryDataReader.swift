@@ -9,7 +9,7 @@
 import Foundation
 
 ///Wrapper on `BinaryReader` which is reference type and keeps current offset.
-public class BinaryDataReader {
+open class BinaryDataReader {
   var readIndex: Int
   let data: BinaryData
   
@@ -33,7 +33,7 @@ public class BinaryDataReader {
    - returns: `UInt8` representation of byte at offset.
    - throws: `BinaryDataErrors.NotEnoughData` if there is not enough data.
    */
-  public func read(bigEndian: Bool? = nil) throws -> UInt8 {
+  open func read(_ bigEndian: Bool? = nil) throws -> UInt8 {
     let value: UInt8 = try data.get(readIndex, bigEndian: bigEndian)
     readIndex = readIndex + 1
     return value
@@ -45,7 +45,7 @@ public class BinaryDataReader {
    - returns: `Int8` representation of byte at offset.
    - throws: `BinaryDataErrors.NotEnoughData` if there is not enough data.
    */
-  public func read(bigEndian: Bool? = nil) throws -> Int8 {
+  open func read(_ bigEndian: Bool? = nil) throws -> Int8 {
     let value: Int8 = try data.get(readIndex, bigEndian: bigEndian)
     readIndex = readIndex + 1
     return value
@@ -57,7 +57,7 @@ public class BinaryDataReader {
    - returns: `UInt16` representation of bytes at offset.
    - throws: `BinaryDataErrors.NotEnoughData` if there is not enough data.
    */
-  public func read(bigEndian: Bool? = nil) throws -> UInt16 {
+  open func read(_ bigEndian: Bool? = nil) throws -> UInt16 {
     let value: UInt16 = try data.get(readIndex, bigEndian: bigEndian)
     readIndex = readIndex + 2
     return value
@@ -69,7 +69,7 @@ public class BinaryDataReader {
    - returns: `Int16` representation of bytes at offset.
    - throws: `BinaryDataErrors.NotEnoughData` if there is not enough data.
    */
-  public func read(bigEndian: Bool? = nil) throws -> Int16 {
+  open func read(_ bigEndian: Bool? = nil) throws -> Int16 {
     let value: Int16 = try data.get(readIndex, bigEndian: bigEndian)
     readIndex = readIndex + 2
     return value
@@ -81,7 +81,7 @@ public class BinaryDataReader {
    - returns: `UInt32` representation of bytes at offset.
    - throws: `BinaryDataErrors.NotEnoughData` if there is not enough data.
    */
-  public func read(bigEndian: Bool? = nil) throws -> UInt32 {
+  open func read(_ bigEndian: Bool? = nil) throws -> UInt32 {
     let value: UInt32 = try data.get(readIndex, bigEndian: bigEndian)
     readIndex = readIndex + 4
     return value
@@ -93,7 +93,7 @@ public class BinaryDataReader {
    - returns: `Int32` representation of bytes at offset.
    - throws: `BinaryDataErrors.NotEnoughData` if there is not enough data.
    */
-  public func read(bigEndian: Bool? = nil) throws -> Int32 {
+  open func read(_ bigEndian: Bool? = nil) throws -> Int32 {
     let value: Int32 = try data.get(readIndex, bigEndian: bigEndian)
     readIndex = readIndex + 4
     return value
@@ -105,7 +105,7 @@ public class BinaryDataReader {
    - returns: `UInt64` representation of bytes at offset.
    - throws: `BinaryDataErrors.NotEnoughData` if there is not enough data.
    */
-  public func read(bigEndian: Bool? = nil) throws -> UInt64 {
+  open func read(_ bigEndian: Bool? = nil) throws -> UInt64 {
     let value: UInt64 = try data.get(readIndex, bigEndian: bigEndian)
     readIndex = readIndex + 8
     return value
@@ -117,7 +117,7 @@ public class BinaryDataReader {
    - returns: `Int64` representation of bytes at offset.
    - throws: `BinaryDataErrors.NotEnoughData` if there is not enough data.
    */
-  public func read(bigEndian: Bool? = nil) throws -> Int64 {
+  open func read(_ bigEndian: Bool? = nil) throws -> Int64 {
     let value: Int64 = try data.get(readIndex, bigEndian: bigEndian)
     readIndex = readIndex + 8
     return value
@@ -129,7 +129,7 @@ public class BinaryDataReader {
    - returns: `Float32` representation of bytes at offset.
    - throws: `BinaryDataErrors.NotEnoughData` if there is not enough data.
    */
-  public func read() throws -> Float32 {
+  open func read() throws -> Float32 {
     let value: Float32 = try data.get(readIndex)
     readIndex = readIndex + 4
     return value
@@ -141,7 +141,7 @@ public class BinaryDataReader {
    - returns: `Float64` representation of bytes at offset.
    - throws: `BinaryDataErrors.NotEnoughData` if there is not enough data.
    */
-  public func read() throws -> Float64 {
+  open func read() throws -> Float64 {
     let value: Float64 = try data.get(readIndex)
     readIndex = readIndex + 8
     return value
@@ -156,7 +156,7 @@ public class BinaryDataReader {
    - `BinaryDataErrors.NotEnoughData` if there is not enough data.
    - `BinaryDataErrors.FailedToConvertToString` if there was an error converting byte stream to String.
    */
-  public func readNullTerminatedUTF8() throws -> String {
+  open func readNullTerminatedUTF8() throws -> String {
     let string = try data.getNullTerminatedUTF8(readIndex)
     readIndex += string.utf8.count + 1//Account for \0
     return string
@@ -172,7 +172,7 @@ public class BinaryDataReader {
    - `BinaryDataErrors.NotEnoughData` if there is not enough data.
    - `BinaryDataErrors.FailedToConvertToString` if there was an error converting byte stream to String.
    */
-  public func readUTF8(length: Int) throws -> String {
+  open func readUTF8(_ length: Int) throws -> String {
     let string = try data.getUTF8(readIndex, length: length)
     readIndex += length
     return string
@@ -186,7 +186,7 @@ public class BinaryDataReader {
    - returns: `BinaryData` subdata starting at `offset` with given `length`.
    - throws: `BinaryDataErrors.NotEnoughData` if there is not enough data.
    */
-  public func read(length: Int) throws -> BinaryData {
+  open func read(_ length: Int) throws -> BinaryData {
     let subdata = try data.subData(readIndex, length)
     readIndex += length
     return subdata

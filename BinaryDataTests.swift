@@ -15,7 +15,7 @@ class BinaryDataTests: XCTestCase {
     let floatData = BinaryData(data:[0x40, 0x20, 0x00, 0x00])
     let doubleData = BinaryData(data:[0x40, 0x20, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00])
     
-    func doManyTimes(block: () -> Void)  {
+    func doManyTimes(_ block: () -> Void)  {
         for _ in 0 ..< 10000 {
             block()
         }
@@ -44,7 +44,7 @@ class BinaryDataTests: XCTestCase {
     }
     
     func testNSDataInit() {
-        guard let nsData = NSData(base64EncodedString: "MTIzNA==", options: NSDataBase64DecodingOptions())
+        guard let nsData = Data(base64Encoded: "MTIzNA==", options: Data.Base64DecodingOptions())
             else { XCTFail("Failed to decode test Base64 string"); return}
         
         let data = BinaryData(data: nsData)
@@ -70,7 +70,7 @@ class BinaryDataTests: XCTestCase {
     }
     
     func testPerformanceGetUInt8() {
-        self.measureBlock {
+        self.measure {
             self.doManyTimes {
                 let _: UInt8? = try? self.intData.get(0)
             }
@@ -83,7 +83,7 @@ class BinaryDataTests: XCTestCase {
     }
     
     func testPerformanceGetInt8() {
-        self.measureBlock {
+        self.measure {
             self.doManyTimes {
                 let _: Int8? = try? self.intData.get(0)
             }
@@ -99,7 +99,7 @@ class BinaryDataTests: XCTestCase {
     }
     
     func testPerformanceGetUInt16() {
-        self.measureBlock {
+        self.measure {
             self.doManyTimes {
                 let _: UInt16? = try? self.intData.get(0)
             }
@@ -112,7 +112,7 @@ class BinaryDataTests: XCTestCase {
     }
     
     func testPerformanceGetInt16() {
-        self.measureBlock {
+        self.measure {
             self.doManyTimes {
                 let _: Int16? = try? self.intData.get(0)
             }
@@ -125,7 +125,7 @@ class BinaryDataTests: XCTestCase {
     }
     
     func testPerformanceGetUInt16LittleEndian() {
-        self.measureBlock {
+        self.measure {
             self.doManyTimes {
                 let _: UInt16? = try? self.intData.get(0, bigEndian:false)
             }
@@ -138,7 +138,7 @@ class BinaryDataTests: XCTestCase {
     }
     
     func testPerformanceGetInt16LittleEndian() {
-        self.measureBlock {
+        self.measure {
             self.doManyTimes {
                 let _: Int16? = try? self.intData.get(0, bigEndian:false)
             }
@@ -153,7 +153,7 @@ class BinaryDataTests: XCTestCase {
     }
     
     func testPerformanceGetUInt32() {
-        self.measureBlock {
+        self.measure {
             self.doManyTimes {
                 let _: UInt32? = try? self.intData.get(0)
             }
@@ -166,7 +166,7 @@ class BinaryDataTests: XCTestCase {
     }
     
     func testPerformanceGetInt32() {
-        self.measureBlock {
+        self.measure {
             self.doManyTimes {
                 let _: Int32? = try? self.intData.get(0)
             }
@@ -179,7 +179,7 @@ class BinaryDataTests: XCTestCase {
     }
     
     func testPerformanceGetUInt32LittleEndian() {
-        self.measureBlock {
+        self.measure {
             self.doManyTimes {
                 let _: UInt32? = try? self.intData.get(0, bigEndian:false)
             }
@@ -192,7 +192,7 @@ class BinaryDataTests: XCTestCase {
     }
     
     func testPerformanceGetInt32LittleEndian() {
-        self.measureBlock {
+        self.measure {
             self.doManyTimes {
                 let _: Int32? = try? self.intData.get(0, bigEndian:false)
             }
@@ -207,7 +207,7 @@ class BinaryDataTests: XCTestCase {
     }
     
     func testPerformanceGetUInt64() {
-        self.measureBlock {
+        self.measure {
             self.doManyTimes {
                 let _: UInt64? = try? self.intData.get(0)
             }
@@ -220,7 +220,7 @@ class BinaryDataTests: XCTestCase {
     }
     
     func testPerformanceGetInt64() {
-        self.measureBlock {
+        self.measure {
             self.doManyTimes {
                 let _: Int64? = try? self.intData.get(0)
             }
@@ -233,7 +233,7 @@ class BinaryDataTests: XCTestCase {
     }
     
     func testPerformanceGetUInt64LittleEndian() {
-        self.measureBlock {
+        self.measure {
             self.doManyTimes {
                 let _: UInt64? = try? self.intData.get(0, bigEndian:false)
             }
@@ -246,7 +246,7 @@ class BinaryDataTests: XCTestCase {
     }
     
     func testPerformanceGetInt64LittleEndian() {
-        self.measureBlock {
+        self.measure {
             self.doManyTimes {
                 let _: Int64? = try? self.intData.get(0, bigEndian:false)
             }
@@ -261,7 +261,7 @@ class BinaryDataTests: XCTestCase {
     }
     
     func testPerformanceGetFloat32() {
-        self.measureBlock {
+        self.measure {
             self.doManyTimes {
                 let _: Float32? = try? self.floatData.get(0)
             }
@@ -274,7 +274,7 @@ class BinaryDataTests: XCTestCase {
     }
     
     func testPerformanceGetFloat64() {
-        self.measureBlock {
+        self.measure {
             self.doManyTimes {
                 let _: Float64? = try? self.doubleData.get(0)
             }
@@ -284,17 +284,17 @@ class BinaryDataTests: XCTestCase {
     //MARK: - Test reading String
     func testGetNullTerminatedString() {
         let testString = "TestData"
-        let bytes = Array(testString.nulTerminatedUTF8)
+        let bytes = Array(testString.utf8CString).map {UInt8($0)}
         let data = BinaryData(data: bytes + bytes)
         print (bytes)
         XCTAssertEqual(try? data.getNullTerminatedUTF8(0), testString)
     }
     
     func testPerformanceGetNullTerminatedString() {
-        self.measureBlock {
+        self.measure {
             self.doManyTimes {
                 let testString = "TestData"
-                let data = BinaryData(data: Array(testString.nulTerminatedUTF8))
+                let data = BinaryData(data: Array(testString.utf8CString).map {UInt8($0)})
                 let _ = try? data.getNullTerminatedUTF8(0)
             }
         }
@@ -302,15 +302,15 @@ class BinaryDataTests: XCTestCase {
     
     func testGetString() {
         let testString = "Test"
-        let data = BinaryData(data: Array(testString.nulTerminatedUTF8))
+        let data = BinaryData(data: Array(testString.utf8CString).map {UInt8($0)})
         XCTAssertEqual(try? data.getUTF8(0, length: 4), testString)
     }
     
     func testPerformanceGetString() {
-        self.measureBlock {
+        self.measure {
             self.doManyTimes {
                 let testString = "Test"
-                let data = BinaryData(data: Array(testString.nulTerminatedUTF8))
+                let data = BinaryData(data: Array(testString.utf8CString).map {UInt8($0)})
                 let _ = try? data.getUTF8(0, length: 4)
             }
         }
@@ -323,7 +323,7 @@ class BinaryDataTests: XCTestCase {
   }
   
   func testPerformanceGetSubData() {
-    self.measureBlock {
+    self.measure {
       self.doManyTimes {
         let _ = try? self.intData.subData(1, 2)
       }
@@ -335,7 +335,7 @@ class BinaryDataTests: XCTestCase {
   }
   
   func testPerformanceTail() {
-    self.measureBlock {
+    self.measure {
       self.doManyTimes {
         let _ = try? self.intData.tail(1)
       }
