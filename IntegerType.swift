@@ -19,7 +19,11 @@ extension UInt16 {
 extension UInt32 {
   static func join(_ parts:(UInt8, UInt8, UInt8, UInt8), bigEndian: Bool) -> UInt32 {
     let tuple = toUInt32(applyOrder(parts, bigEndian))
-    return (UInt32(tuple.3) << 24) | (UInt32(tuple.2) << 16) | (UInt32(tuple.1) << 8) | UInt32(tuple.0)
+    let tuple24 = UInt32(tuple.3) << 24
+    let tuple16 = UInt32(tuple.2) << 16
+    let tuple8 = UInt32(tuple.1) << 8
+    let tuple0 = UInt32(tuple.0)
+    return tuple24 | tuple16 | tuple8 | tuple0
   }
 }
 
