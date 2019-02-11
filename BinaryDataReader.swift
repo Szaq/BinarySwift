@@ -10,7 +10,7 @@ import Foundation
 
 ///Wrapper on `BinaryReader` which is reference type and keeps current offset.
 open class BinaryDataReader {
-  var readIndex: Int
+  public private(set) var readIndex: Int
   let data: BinaryData
   
   /**
