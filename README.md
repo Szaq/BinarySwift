@@ -1,5 +1,4 @@
-[![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage) ![platforms](https://img.shields.io/badge/platforms-iOS%20%7C%20OSX
--333333.svg) ![pod](https://img.shields.io/cocoapods/v/BinarySwift.svg)[![Build Status](https://travis-ci.org/Szaq/BinarySwift.svg?branch=master)](https://travis-ci.org/Szaq/BinarySwift)
+[![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage) ![platforms](https://img.shields.io/badge/platforms-iOS%20%7C%20OSX-333333.svg) ![pod](https://img.shields.io/cocoapods/v/BinarySwift.svg) [![Build Status](https://travis-ci.org/Szaq/BinarySwift.svg?branch=master)](https://travis-ci.org/Szaq/BinarySwift)
 # BinarySwift
 
 BinarySwift is a pure-swift library for parsing binary data. It contains two components - BinaryReader which can be used to parse
@@ -93,5 +92,5 @@ You can even pass `reader` down to other functions, because it is a `class` and 
 
 This library is perfect compromise. Neither magic nor too verbose.
 
-#Contributions
+# Contributions
 Contributions are more than welcome. Please send your PRs / Issues / Whatever comes to your mind.
