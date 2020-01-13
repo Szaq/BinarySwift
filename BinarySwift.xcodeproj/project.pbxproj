@@ -49,17 +49,17 @@
 /* Begin PBXFileReference section */
 		2009DE431CBBC98200A4BC50 /* BinarySwiftTests_OSX.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BinarySwiftTests_OSX.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2009DE471CBBC98200A4BC50 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		2009DE511CBBCA1800A4BC50 /* BinaryDataTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BinaryDataTests.swift; sourceTree = "<group>"; };
-		2009DE551CBD2ED000A4BC50 /* BinaryDataReaderTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BinaryDataReaderTests.swift; sourceTree = "<group>"; };
+		2009DE511CBBCA1800A4BC50 /* BinaryDataTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BinaryDataTests.swift; path = Tests/BinarySwiftTests/BinaryDataTests.swift; sourceTree = SOURCE_ROOT; };
+		2009DE551CBD2ED000A4BC50 /* BinaryDataReaderTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BinaryDataReaderTests.swift; path = Tests/BinarySwiftTests/BinaryDataReaderTests.swift; sourceTree = SOURCE_ROOT; };
 		3980FC6D1CB92F2C0091D322 /* BinarySwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BinarySwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3980FC701CB92F2C0091D322 /* BinarySwift_OSX.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BinarySwift_OSX.h; sourceTree = "<group>"; };
 		3980FC721CB92F2C0091D322 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		3980FC791CB92F620091D322 /* BinaryData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BinaryData.swift; sourceTree = "<group>"; };
-		3980FC7A1CB92F620091D322 /* BinaryDataErrors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BinaryDataErrors.swift; sourceTree = "<group>"; };
-		3980FC7B1CB92F620091D322 /* BinaryDataReader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BinaryDataReader.swift; sourceTree = "<group>"; };
-		3980FC7C1CB92F620091D322 /* Common.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
-		3980FC7D1CB92F620091D322 /* IntegerType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntegerType.swift; sourceTree = "<group>"; };
-		3980FC7E1CB92F620091D322 /* Tuple.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tuple.swift; sourceTree = "<group>"; };
+		3980FC791CB92F620091D322 /* BinaryData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BinaryData.swift; path = Sources/BinarySwift/BinaryData.swift; sourceTree = SOURCE_ROOT; };
+		3980FC7A1CB92F620091D322 /* BinaryDataErrors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BinaryDataErrors.swift; path = Sources/BinarySwift/BinaryDataErrors.swift; sourceTree = SOURCE_ROOT; };
+		3980FC7B1CB92F620091D322 /* BinaryDataReader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BinaryDataReader.swift; path = Sources/BinarySwift/BinaryDataReader.swift; sourceTree = SOURCE_ROOT; };
+		3980FC7C1CB92F620091D322 /* Common.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Common.swift; path = Sources/BinarySwift/Common.swift; sourceTree = SOURCE_ROOT; };
+		3980FC7D1CB92F620091D322 /* IntegerType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = IntegerType.swift; path = Sources/BinarySwift/IntegerType.swift; sourceTree = SOURCE_ROOT; };
+		3980FC7E1CB92F620091D322 /* Tuple.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Tuple.swift; path = Sources/BinarySwift/Tuple.swift; sourceTree = SOURCE_ROOT; };
 		3980FC8A1CB92F840091D322 /* BinarySwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BinarySwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3980FC8C1CB92F840091D322 /* BinarySwift_iOS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BinarySwift_iOS.h; sourceTree = "<group>"; };
 		3980FC8E1CB92F840091D322 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -298,7 +298,7 @@
 					};
 					3980FC891CB92F840091D322 = {
 						CreatedOnToolsVersion = 7.3;
-						LastSwiftMigration = 0920;
+						LastSwiftMigration = 1130;
 					};
 					39EE444D1CBC542600C947A9 = {
 						CreatedOnToolsVersion = 7.3;
@@ -311,6 +311,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 			);
 			mainGroup = 3980FC631CB92F2C0091D322;
@@ -608,7 +609,7 @@
 				PRODUCT_NAME = BinarySwift;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -631,7 +632,7 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
